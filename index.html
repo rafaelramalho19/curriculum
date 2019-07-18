@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rafael Ramalho Website</title>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+            height: 100%;
+
+            margin: 0;
+            padding: 0;
+
+            font-family: 'Lato', Helvetica, sans-serif;
+            color: #FFF;
+            background-color: #001F3F;
+        }
+
+        .name {
+            display: flex;
+            align-items: center;
+        }
+
+        .name {
+            font-size: 8vw;
+        }
+
+        .domain {
+            display: flex;
+            position: relative;
+        }
+
+        .domain__char {
+            animation: appear .3s ease-in-out both;
+        }
+
+        .domain__char:first-child {
+            animation-delay: .2s;
+        }
+
+        .domain__char:nth-child(2) {
+            animation-delay: .6s;
+        }
+
+        .domain__char:nth-child(3) {
+            animation-delay: .9s;
+        }
+
+        .domain__char:nth-child(4) {
+            animation-delay: 1.3s;
+        }
+
+        .caret {
+            width: 2px;
+            margin-left: 1vw;
+            background-color: #FFF;
+            opacity: 0;
+            transform: scaleY(0);
+
+            transform-origin: center center;
+            animation: flick .5s ease-in-out alternate-reverse infinite both 2s;
+        }
+
+        @keyframes flick {
+            from {
+                transform: scaleY(1);
+                opacity: 1
+            }
+        }
+
+        @keyframes appear {
+            0% { opacity: 0; }
+            10% { display: block; }
+            100% { opacity: 1; }
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 class="name">
+        <span>Rafael Ramalho</span>
+        <div class="domain">
+            <span class="domain__char">.</span>
+            <span class="domain__char">d</span>
+            <span class="domain__char">e</span>
+            <span class="domain__char">v</span>
+            <span class="caret"></span>
+        </div>
+    </h1>
+</body>
+
+</html>
