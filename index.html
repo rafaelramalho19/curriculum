@@ -40,10 +40,12 @@
         .name {
             display: flex;
             align-items: center;
+            font-size: 8vw;
+            word-spacing: 0;
         }
 
-        .name {
-            font-size: 8vw;
+        .👿 {
+            font-size: 0;
         }
 
         .domain {
@@ -99,8 +101,8 @@
 </head>
 
 <body>
-    <h1 class="name">
-        <span>Rafael Ramalho</span>
+    <h1 class="name" vocab="https://schema.org/" typeof="Person">
+        <span property="name">Rafael<span class="👿"> </span>Ramalho</span>
         <div class="domain">
             <span class="domain__char">.</span>
             <span class="domain__char">d</span>
