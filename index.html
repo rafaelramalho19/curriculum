@@ -12,105 +12,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
-    <style>
-        html {
-            display: block;
-
-            width: 100%;
-            height: 100%;
-
-            overflow: hidden;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-
-            width: 100%;
-            height: 100%;
-
-            margin: 0;
-            padding: 0;
-
-            font-family: 'Lato', Helvetica, sans-serif;
-            color: #FFF;
-            background-color: #001F3F;
-        }
-
-        .name {
-            display: flex;
-            align-items: center;
-            font-size: 8vw;
-            word-spacing: 0;
-        }
-
-        .👿 {
-            font-size: 0;
-        }
-
-        .domain {
-            display: flex;
-            position: relative;
-        }
-
-        .domain__char {
-            animation: appear .3s ease-in-out both;
-        }
-
-        .domain__char:first-child {
-            animation-delay: .2s;
-        }
-
-        .domain__char:nth-child(2) {
-            animation-delay: .6s;
-        }
-
-        .domain__char:nth-child(3) {
-            animation-delay: .9s;
-        }
-
-        .domain__char:nth-child(4) {
-            animation-delay: 1.3s;
-        }
-
-        .caret {
-            width: 2px;
-            margin-left: 1vw;
-            background-color: #FFF;
-            opacity: 0;
-            transform: scaleY(0);
-
-            transform-origin: center center;
-            animation: flick .5s ease-in-out alternate-reverse infinite both 2s;
-        }
-
-        @keyframes flick {
-            from {
-                transform: scaleY(1);
-                opacity: 1
-            }
-        }
-
-        @keyframes appear {
-            0% { opacity: 0; }
-            10% { display: block; }
-            100% { opacity: 1; }
-        }
-
-    </style>
+    <link rel="stylesheet" href="./styles/main.scss">
 </head>
 
 <body>
-    <h1 class="name" vocab="https://schema.org/" typeof="Person">
-        <span property="name">Rafael<span class="👿"> </span>Ramalho</span>
-        <div class="domain">
-            <span class="domain__char">.</span>
-            <span class="domain__char">d</span>
-            <span class="domain__char">e</span>
-            <span class="domain__char">v</span>
-            <span class="caret"></span>
+    <section class="section section--full-page section--centered" vocab="https://schema.org/" typeof="Person">
+        <h1 class="name">
+            <span property="name">Rafael<span class="👿"> </span>Ramalho</span>
+            <div class="domain">
+                <span class="domain__char">.</span>
+                <span class="domain__char">d</span>
+                <span class="domain__char">e</span>
+                <span class="domain__char">v</span>
+                <span class="caret"></span>
+            </div>
+        </h1>
+        <div class="job" property="jobTitle">
+            Front-end Developer
         </div>
-    </h1>
+    </section>
 </body>
 
 </html>
