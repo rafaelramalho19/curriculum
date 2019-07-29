@@ -1,0 +1,56 @@
+@import './base';
+@import './animations';
+@import './section';
+
+
+.name {
+    display: flex;
+    align-items: center;
+    font-size: 8vw;
+    word-spacing: 0;
+}
+
+.job {
+    font-size: 4vw;
+}
+
+// Not proud, but oh well
+.👿 {
+    font-size: 0;
+}
+
+.domain {
+    display: flex;
+    position: relative;
+}
+
+.domain__char {
+    animation: appear .3s ease-in-out both;
+}
+
+.domain__char:first-child {
+    animation-delay: .2s;
+}
+
+.domain__char:nth-child(2) {
+    animation-delay: .6s;
+}
+
+.domain__char:nth-child(3) {
+    animation-delay: .9s;
+}
+
+.domain__char:nth-child(4) {
+    animation-delay: 1.3s;
+}
+
+.caret {
+    width: 2px;
+    margin-left: 1vw;
+    background-color: #FFF;
+    opacity: 0;
+    transform: scaleY(0);
+
+    transform-origin: center center;
+    animation: flick .5s ease-in-out alternate-reverse infinite both 2s;
+}
