@@ -7,6 +7,7 @@
     "start": "parcel serve index.html",
     "build": "rimraf dist ; parcel build index.html dist/",
     "deploy": "gh-pages -b master -d dist",
+    "lint": "eslint js/**",
     "lintcss": "stylelint styles/**.scss"
   },
   "repository": {
@@ -31,7 +32,9 @@
   },
   "homepage": "https://github.com/rafaelramalho19/curriculum#readme",
   "devDependencies": {
+    "eslint": "6.1.0",
     "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "3.1.0",
     "husky": "3.0.1",
     "lint-staged": "9.2.1",
@@ -49,7 +52,7 @@
   },
   "lint-staged": {
     "*.{js,css,json,md}": [
-      "prettier --write",
+      "eslint",
       "git add"
     ]
   }
