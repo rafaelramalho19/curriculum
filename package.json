@@ -51,7 +51,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,json,md}": [
+    "*.{js,css}": [
       "eslint",
       "git add"
     ]

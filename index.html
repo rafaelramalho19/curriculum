@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,7 +16,7 @@
 
 <body>
     <main class="scroll-section">
-        <section class="section section--full-page section--centered scroll-section__stop" vocab="https://schema.org/" typeof="Person">
+        <section class="section section--full section--centered scroll-section__stop" vocab="https://schema.org/" typeof="Person">
             <h1 class="name">
                 <span property="name">Rafael<span class="👿"> </span>Ramalho</span>
                 <div class="domain">
@@ -32,10 +31,15 @@
                 Front-end Developer
             </div>
         </section>
+
+        <section class="section section--full section--centered scroll-section__stop" id="companies">
+            <h2 class="section__title">Companies</h2>
+
+            <companies-list></companies-list>
+        </section>
     </main>
 
-    <script type="module" src="./js/navigation.js"></script>
-    <script type="module" src="./js/cover.js"></script>
+    <script type="module" src="./js/companies-list.js"></script>
 </body>
 
 </html>
