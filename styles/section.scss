@@ -1,8 +1,8 @@
 .section {
     display: flex;
-    flex-flow: column wrap;
     flex: 1 0 auto;
-    
+    flex-flow: column wrap;
+
     &--full-page {
         width: 100%;
         height: 100vh;
@@ -11,5 +11,16 @@
     &--centered {
         justify-content: center;
         align-items: center;
+    }
+}
+
+.scroll-section {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+
+    &__stop {
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
     }
 }
