@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel serve index.html",
     "build": "rimraf dist ; parcel build index.html dist/",
-    "deploy": "npm run build; gh-pages -b master -d dist",
+    "deploy": "npm run build ; cpx CNAME dist ; gh-pages -b master -d dist",
     "lint": "eslint js/**",
     "lintcss": "stylelint styles/**.scss"
   },
@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/rafaelramalho19/curriculum#readme",
   "devDependencies": {
+    "cpx": "^1.5.0",
     "eslint": "6.1.0",
     "eslint-config-prettier": "6.0.0",
     "eslint-plugin-import": "^2.18.2",
