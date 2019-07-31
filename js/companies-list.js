@@ -38,17 +38,19 @@ class CompaniesList extends HTMLElement {
         .map(
           company =>
             `<li class="company" vocab="https://schema.org/" typeof="Corporation">
-              <a class="company__name" href="${company.url}" rel="noopener">
-                ${company.name}
-              </a>
-              <div class="company__info">
+              <h3>
+                <a class="company__name" href="${company.url}" rel="noopener">
+                  ${company.name}
+                </a>
+              </h3>
+              <p class="company__info">
                 <span class="company__time">
                 <time>${this.formatDateToMonthAndYear(company.startDate)}</time>
                 <span class="company__arrow"></span>
                 <span class="company__arrow company__arrow--2"></span>
                 <time>${company.endDate ? this.formatDateToMonthAndYear(company.endDate) : 'Current day'}</time>
                 </span>
-              </div>
+              </p>
           </li>`
         )
         .join('')}

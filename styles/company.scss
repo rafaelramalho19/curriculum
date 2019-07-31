@@ -1,15 +1,19 @@
-$arrow-size: 3px;
+$arrow-size: 0.2rem;
 
 .company {
-    padding: 16px;
+    padding: 8px 16px;
+
+    &:first-of-type {
+        padding-top: 32px;
+    }
 
     &__container {
+        padding: 0;
         list-style: none;
     }
 
     &__name {
         color: #fff;
-        font-size: 7vw;
         text-decoration: none;
     }
 
@@ -31,10 +35,9 @@ $arrow-size: 3px;
 
     time {
         padding: 0 10px;
-        font-size: 3vw;
 
-        @media(min-width: 720px) {
-            font-size: 1.5vw;
+        &:first-of-type {
+            padding-left: 0;
         }
     }
 }
