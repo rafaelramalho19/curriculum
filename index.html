@@ -8,7 +8,8 @@
     <meta name="description" content="Rafael Ramalho, a portuguese front-end developer ready for any challenge.">
     <meta property="og:url" content="https://www.rafaelramalho.dev/">
     <meta property="og:title" content="Rafael Ramalho Website">
-    <meta property="og:description" content="Rafael Ramalho, a portuguese front-end developer ready for any challenge 💪🇵🇹"/>
+    <meta property="og:description"
+        content="Rafael Ramalho, a portuguese front-end developer ready for any challenge 💪🇵🇹" />
     <meta property="og:image" content="https://avatars1.githubusercontent.com/u/24696635?s=460&v=4">
     <meta property="og:site_name" content="Rafael Ramalho personal website">
 
@@ -24,7 +25,12 @@
 
 <body>
     <main class="scroll-section">
-        <section class="section section--full section--centered scroll-section__stop" vocab="https://schema.org/" typeof="Person">
+        <section class="section section--full section--centered scroll-section__stop" vocab="https://schema.org/"
+            typeof="Person">
+            <div class="face__container">
+                <img class="body" src="./assets/dev-body.svg" alt="Developer sexy body">
+                <img class="face face--pull-down" src="./assets/rafael-ramalho.png" alt="Rafael Ramalho avatar">
+            </div>
             <h1 class="name">
                 <span property="name">Rafael<span class="👿"> </span>Ramalho</span>
                 <div class="domain">
@@ -38,6 +44,29 @@
             <div class="job" property="jobTitle">
                 Front-end Developer
             </div>
+
+            <nav class="contacts__container">
+                <ul class="contacts">
+                    <li class="contacts__item">
+                        <img class="contacts__icon" src="./assets/linkedin.svg" alt="LinkedIn icon" />
+                        <a class="linkless" href="https://www.linkedin.com/in/rafazelramalho/" target="_blank">
+                            <span class="label">LinkedIn</span>
+                        </a>
+                    </li>
+                    <li class="contacts__item">
+                        <img class="contacts__icon" src="./assets/github.svg" alt="Github icon" />
+                        <a class="linkless" href="https://github.com/rafaelramalho19" target="_blank">
+                            <span class="label">GitHub</span>
+                        </a>
+                    </li>
+                    <li class="contacts__item">
+                        <img class="contacts__icon" src="./assets/email.svg" alt="Email icon" />
+                        <a class="linkless" href="mailto:rafazelramalho19@gmail.com">
+                            <span class="label">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </section>
 
         <section class="section section--full section--centered scroll-section__stop" id="companies">
@@ -48,6 +77,7 @@
     </main>
 
     <script async defer src="./js/companies-list.js"></script>
+    <script async defer src="./js/face.js"></script>
 </body>
 
 </html>

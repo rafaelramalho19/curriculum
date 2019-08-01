@@ -39,7 +39,7 @@ class CompaniesList extends HTMLElement {
           company =>
             `<li class="company" vocab="https://schema.org/" typeof="Corporation">
               <h3>
-                <a class="company__name" href="${company.url}" rel="noopener">
+                <a class="company__name" href="${company.url}" rel="noopener" target="_blank" property="name">
                   ${company.name}
                 </a>
               </h3>

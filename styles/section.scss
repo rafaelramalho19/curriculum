@@ -1,4 +1,5 @@
 .section {
+    position: relative;
     padding: 0 16px;
 
     display: flex;
@@ -17,9 +18,8 @@
 }
 
 .scroll-section {
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100%;
+    overflow: auto;
     scroll-snap-type: y mandatory;
 
     &__stop {
