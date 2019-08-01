@@ -53,18 +53,20 @@ body {
 
 .face {
     position: absolute;
+
     bottom: 128px;
     left: calc(50% - 15px);
+
     width: 20%;
     z-index: -1;
-    transform: translate(-50%, 0);
+
+    transform: translate(-50%, 100%);
+
+    opacity: 0;
     object-fit: contain;
     border-radius: 48%;
-    transition: transform 0.8s ease-in-out;
 
-    &--pull-down {
-        transform: translate(-50%, 100%);
-    }
+    animation: sexy-face 1.4s ease-in-out both;
 
     &__container {
         position: relative;
