@@ -1,1 +1,0 @@
-{"version":3,"sources":["js/face.js"],"names":["setTimeout","document","querySelector","classList","remove"],"mappings":";AAAAA,WAAW,WACTC,SAASC,cAAc,SAASC,UAAUC,OAAO,oBAChD","file":"face.63f9f5f1.js","sourceRoot":"..","sourcesContent":["setTimeout(() => {\n  document.querySelector('.face').classList.remove('face--pull-down');\n}, 1000);\n"]}
