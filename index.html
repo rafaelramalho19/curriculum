@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    <img class="background" src="./assets/background.svg" alt="Wavy background"/>
     <main class="scroll-section">
         <section class="section section--full section--centered scroll-section__stop" vocab="https://schema.org/"
             typeof="Person">
@@ -83,14 +84,22 @@
             </nav>
         </section>
 
-        <section class="section section--full section--centered scroll-section__stop" id="companies">
+        <section class="section section--full section--centered scroll-section__stop">
             <h2>Companies</h2>
 
             <companies-list></companies-list>
         </section>
+
+        <section class="section section--full section--centered scroll-section__stop">
+            <h2>Technologies used</h2>
+
+            <technologies-list></technologies-list>
+        </section>
     </main>
 
+    <script async defer src="./js/background.js"></script>
     <script async defer src="./js/companies-list.js"></script>
+    <script async defer src="./js/technologies-list.js"></script>
 </body>
 
 </html>

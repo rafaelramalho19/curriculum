@@ -1,0 +1,28 @@
+$red-hue: 45deg;
+$green-hue: 120deg;
+$blue-hue: 240deg;
+
+.background {
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    height: 90%;
+
+    z-index: -1;
+
+    opacity: 0.5;
+    object-fit: cover;
+
+    filter: hue-rotate($red-hue);
+    transition: filter 0.4s ease-in-out;
+
+    &--1 {
+        filter: hue-rotate($green-hue);
+    }
+
+    &--2 {
+        filter: hue-rotate($blue-hue);
+    }
+}
