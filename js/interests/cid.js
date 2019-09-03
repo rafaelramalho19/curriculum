@@ -17,7 +17,7 @@ function turnOffLightBulb(lightBulb) {
 
 function pullCord(cord) {
   const timeline = new TimelineLite({
-    onComplete: () => {
+    onStart: () => {
       const isLightsOn = lightBulb.classList.contains(LIGHTBULB_ACTIVE_CLASS);
       isLightsOn ? startCodeInTheDark() : goBackIntoTheDark();
     }
@@ -51,11 +51,7 @@ function startCodeInTheDark() {
 }
 
 function goBackIntoTheDark() {
-  const timeline = new TimelineLite();
-
-  timeline.set(astronaut, {
-    opacity: 0
-  });
+  astronaut.style.opacity = 0;
 }
 
 function start() {
