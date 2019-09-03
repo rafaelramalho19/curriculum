@@ -1,0 +1,13 @@
+.interest {
+    &__title {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+    }
+
+    &__subtitle {
+        position: absolute;
+        right: 2rem;
+        bottom: 2rem;
+    }
+}

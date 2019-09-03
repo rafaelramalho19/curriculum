@@ -1,18 +1,21 @@
 @import "./colors";
 
 .technology {
-    padding: 0.6rem 0 0;
+    padding: 1.5rem;
 
     &__container {
-        padding-top: 1rem;
+        max-width: 1050px;
+        padding-top: 2rem;
 
         display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
     }
 
     &--frontend + &--backend,
     &--backend + &--database {
-        padding-top: 2rem;
+        padding-left: 2rem;
     }
 }

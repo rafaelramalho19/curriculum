@@ -25,4 +25,8 @@ $blue-hue: 240deg;
     &--2 {
         filter: hue-rotate($blue-hue);
     }
+
+    &--3 {
+        opacity: 0;
+    }
 }

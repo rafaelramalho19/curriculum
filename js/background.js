@@ -1,3 +1,6 @@
+import { codeInTheDark } from './interests';
+import { showSection } from './section';
+
 const backgroundElement = document.querySelector('.background');
 
 const onSectionIntersected = section => {
@@ -10,6 +13,16 @@ const onSectionIntersected = section => {
   const sectionIndex = [...parent.children].indexOf(section);
 
   backgroundElement.className = `background background--${sectionIndex}`;
+
+  const modifier = section.getAttribute('data-modifier');
+
+  showSection(section);
+
+  switch (modifier) {
+    case 'cid':
+      codeInTheDark.start();
+      break;
+  }
 };
 
 if ('IntersectionObserver' in window) {

@@ -58,5 +58,8 @@
       "eslint",
       "git add"
     ]
+  },
+  "dependencies": {
+    "gsap": "^2.1.3"
   }
 }
