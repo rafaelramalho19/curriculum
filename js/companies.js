@@ -1,9 +1,15 @@
 const companies = [
   {
+    name: 'Moxy',
+    url: 'https://moxy.studio/',
+    startDate: new Date(2019, 9),
+    endDate: null
+  },
+  {
     name: 'Blip',
     url: 'https://blip.pt/',
     startDate: new Date(2018, 0),
-    endDate: null
+    endDate: new Date(2019, 8)
   },
   {
     name: 'Pixelmatters',
