@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel serve index.html",
     "build": "rimraf dist ; parcel build index.html dist/",
-    "deploy": "npm run build ; cpx CNAME dist ; gh-pages -b master -d dist",
+    "deploy": "npm run build ; ncp CNAME dist/CNAME ; gh-pages -b master -d dist",
     "lint": "eslint js/**",
     "lintcss": "stylelint styles/**.scss"
   },
@@ -36,11 +36,12 @@
     "@parcel/transformer-sass": "2.6.2",
     "@parcel/transformer-webmanifest": "2.6.2",
     "@parcel/transformer-xml": "2.6.2",
-    "cpx": "^1.5.0",
     "eslint": "^8.19.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "ncp": "^2.0.0",
     "node-sass": "^7.0.1",
     "parcel": "^2.6.2",
     "rimraf": "^3.0.2",
