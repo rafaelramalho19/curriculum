@@ -1,9 +1,15 @@
 const companies = [
   {
-    name: 'Moxy',
+    name: 'OLX',
+    url: 'https://olx.pt/',
+    startDate: new Date(2022, 3),
+    endDate: null
+  },
+  {
+    name: 'Moxy & Uphold',
     url: 'https://moxy.studio/',
     startDate: new Date(2019, 9),
-    endDate: null
+    endDate: new Date(2022, 2)
   },
   {
     name: 'Blip',
