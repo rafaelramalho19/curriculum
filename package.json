@@ -4,7 +4,7 @@
   "description": "Website for rafaelramalho.dev",
   "scripts": {
     "start": "parcel serve index.html",
-    "build": "rimraf dist ; parcel build index.html dist/",
+    "build": "parcel build index.html --dist-dir dist",
     "deploy": "npm run build ; ncp CNAME dist/CNAME ; gh-pages -b master -d dist",
     "lint": "eslint js/**",
     "lintcss": "stylelint styles/**.scss"
@@ -44,7 +44,7 @@
     "ncp": "^2.0.0",
     "node-sass": "^7.0.1",
     "parcel": "^2.6.2",
-    "rimraf": "^3.0.2",
+    "prettier": "^2.7.1",
     "stylelint": "^14.9.1"
   },
   "husky": {
