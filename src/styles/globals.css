@@ -1,0 +1,30 @@
+:root {
+  --color-red: #ff8577;
+  --color-green: #22e183;
+  --color-purple: #a79df7;
+  --color-yellow: #efff7c;
+  --color-blue: #003c71;
+  --color-black: #000;
+  --color-white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--color-black);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

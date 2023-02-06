@@ -1,0 +1,8 @@
+.hello {
+  display: flex;
+  width: 100%;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 0 16px;
+}
