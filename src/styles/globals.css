@@ -21,7 +21,13 @@ body {
 }
 
 body {
+  font-family: "Gentium Book Plus", serif;
   background: var(--color-black);
+  height: 100vh;
+}
+
+#__next {
+  height: 100%;
 }
 
 a {

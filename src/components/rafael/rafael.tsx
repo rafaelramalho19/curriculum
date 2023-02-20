@@ -4,13 +4,30 @@ import React from "react";
 import rafaelPicture from "@/../public/rafael-ramalho.png";
 
 import styles from "./rafael.module.css";
+import classNames from "classnames";
 
-export const Rafael = () => {
+export type Colors = "green" | "purple" | "yellow" | undefined;
+
+type Props = {
+  activeColor?: Colors;
+};
+
+export const Rafael = ({ activeColor }: Props) => {
   return (
     <div className={styles.container}>
-      <div className={styles.topBackground} />
+      <div
+        className={classNames(
+          styles.topBackground,
+          activeColor && styles[activeColor]
+        )}
+      />
       <Image className={styles.image} src={rafaelPicture} width="600" alt="" />
-      <div className={styles.bottomBackground} />
+      <div
+        className={classNames(
+          styles.bottomBackground,
+          activeColor && styles[activeColor]
+        )}
+      />
     </div>
   );
 };
