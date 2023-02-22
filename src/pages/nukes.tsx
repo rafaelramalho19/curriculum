@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 const ActiveNuke = (props: any) => (
-    <img {...props} src="https://media.tenor.com/wtY8p60PXwUAAAAj/nuke-radio-active.gif" />
+    <img className={styles.nuke} {...props} src="https://media.tenor.com/wtY8p60PXwUAAAAj/nuke-radio-active.gif" />
 );
 
 const InactiveNuke = (props: object) => <ActiveNuke style={{ filter: 'grayscale(100%)' }}  {...props} />

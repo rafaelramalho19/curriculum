@@ -1,6 +1,10 @@
 .main {
     width: 100vw;
     height: 100vh;
-
     font-size: 10vw;
+}
+
+.nuke {
+    width: 16vw;
+    margin-left: 2vw;
 }

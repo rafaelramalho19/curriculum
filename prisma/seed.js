@@ -3,7 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-    const alice = await prisma.nuke.upsert({
+    await prisma.nuke.upsert({
         where: { id: 1 },
         update: {},
         create: {
