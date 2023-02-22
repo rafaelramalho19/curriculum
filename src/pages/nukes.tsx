@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const ActiveNuke = (props: object) => (
+const ActiveNuke = (props: any) => (
     <img {...props} src="https://media.tenor.com/wtY8p60PXwUAAAAj/nuke-radio-active.gif" />
 );
 
