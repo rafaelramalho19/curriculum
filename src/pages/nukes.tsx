@@ -2,19 +2,17 @@ import Head from "next/head";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/nukes.module.css";
 import { useEffect, useState } from "react";
+import NukeIcon from "@/images/nuke";
+import InactiveNukeIcon from "@/images/inactive-nuke";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const ActiveNuke = (props: any) => (
-  <img
-    className={styles.nuke}
-    {...props}
-    src="https://media.tenor.com/wtY8p60PXwUAAAAj/nuke-radio-active.gif"
-  />
-);
+const ActiveNuke = (props: any) => {
+  return <NukeIcon className={styles.activeNuke} {...props} />;
+};
 
-const InactiveNuke = (props: object) => (
-  <ActiveNuke style={{ filter: "grayscale(100%)" }} {...props} />
+const InactiveNuke = (props: any) => (
+  <InactiveNukeIcon className={styles.nuke} {...props} />
 );
 
 const getNumberOfNukes = async () => {
