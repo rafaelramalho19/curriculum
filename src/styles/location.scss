@@ -1,0 +1,78 @@
+@keyframes appear {
+  from { opacity: 0; }
+}
+
+@keyframes appearFromTop {
+  from { opacity: 0; transform: translate(-50%, -100%)}
+}
+
+.location {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  &__pin {
+    position: fixed;
+    width: 3vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__text {
+    position: absolute;
+    top: 42vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    animation: appearFromTop 0.4s ease-in-out both;
+
+  }
+
+  &__background {
+    position: absolute;
+    background: #000;
+    border-radius: 30px;
+    animation: appear 0.3s ease-in-out both;
+  }
+
+  &:not(&--visible) &__background,
+  &:not(&--visible) &__text {
+    display: none;
+  }
+
+  &--visible &__background--top {
+    top: 0;
+    opacity: 0.6;
+    width: 100vw;
+    height: 45vh;
+  }
+
+  &--visible &__background--left {
+    top: 45vh;
+    opacity: 0.6;
+    width: 45vw;
+    height: 10vh;
+    border-right: 2px solid #FFF;
+  }
+
+  &--visible &__background--bottom {
+    bottom: 0;
+    opacity: 0.6;
+    width: 100vw;
+    height: 45vh;
+  }
+
+  &--visible &__background--right {
+    top: 45vh;
+    right: 0;
+    opacity: 0.6;
+    width: 45vw;
+    height: 10vh;
+    border-left: 2px solid #FFF;
+  }
+}
