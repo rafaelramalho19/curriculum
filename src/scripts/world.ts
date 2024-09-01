@@ -3,20 +3,99 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 import { getFresnelMat } from "./utils/fresnel";
 import { getStarfield } from "./utils/starfield";
-import { Easing, Tween } from "@tweenjs/tween.js";
+import { Easing, Group, Tween } from "@tweenjs/tween.js";
 import { startLocationSection } from "./location";
 import { allowScrolling, disableScrolling } from "./utils/scroll";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
+const tweens = new Group();
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+  90,
+  width / height,
+  0.1,
+  1000,
+);
 camera.position.z = 5;
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+});
 renderer.setSize(width, height);
-document.querySelector(".world-container")?.prepend(renderer.domElement);
+document
+  .querySelector(".world-container")
+  ?.prepend(renderer.domElement);
+
+function addEarth() {
+  const mapTexture = loader.load("/static/assets/earth/map.jpg");
+  mapTexture.generateMipmaps = false;
+  mapTexture.magFilter = THREE.NearestFilter;
+
+  const material = new THREE.MeshPhongMaterial({
+    map: mapTexture,
+    specularMap: loader.load("/static/assets/earth/spec.jpg"),
+    bumpMap: loader.load("/static/assets/earth/bump.jpg"),
+    bumpScale: 0.04,
+  });
+  const earthMesh = new THREE.Mesh(geometry, material);
+  earthGroup.add(earthMesh);
+}
+
+function addLights() {
+  const lightsMat = new THREE.MeshBasicMaterial({
+    map: loader.load("/static/assets/earth/lights.jpg"),
+    blending: THREE.AdditiveBlending,
+  });
+  const lightsMesh = new THREE.Mesh(geometry, lightsMat);
+  earthGroup.add(lightsMesh);
+}
+
+function addClouds() {
+  const cloudsMat = new THREE.MeshStandardMaterial({
+    map: loader.load("/static/assets/earth/clouds.jpg"),
+    transparent: true,
+    opacity: 0.3,
+    blending: THREE.AdditiveBlending,
+    alphaMap: loader.load("/static/assets/earth/clouds_alpha.jpg"),
+  });
+  const cloudsMesh = new THREE.Mesh(geometry, cloudsMat);
+  cloudsMesh.scale.setScalar(1.003);
+  earthGroup.add(cloudsMesh);
+}
+
+function addSunlight() {
+  const sunLight = new THREE.DirectionalLight(0xffffff, 1.3);
+  sunLight.position.set(-1, 3.5, -0.5);
+  scene.add(sunLight);
+}
+
+function addGlow() {
+  const fresnelMat = getFresnelMat();
+  const glowMesh = new THREE.Mesh(geometry, fresnelMat);
+  glowMesh.scale.setScalar(1.01);
+  earthGroup.add(glowMesh);
+}
+
+function addStars() {
+  const stars = getStarfield({ numStars: 2000 });
+  scene.add(stars);
+}
+
+function addVigoOutline() {
+  const mapTexture = loader.load("/static/assets/earth/vigo.png");
+  const material = new THREE.MeshBasicMaterial({
+    map: mapTexture,
+    alphaToCoverage: true,
+  });
+  const vigoMesh = new THREE.Mesh(geometry, material);
+  earthGroup.add(vigoMesh);
+
+  vigoMesh.visible = false;
+
+  return vigoMesh;
+}
 
 const VIGO = {
   position: {
@@ -31,11 +110,6 @@ const VIGO = {
   },
 };
 
-const onWorldLoadCompleted = () => {
-  startLocationSection();
-  allowScrolling();
-};
-
 disableScrolling();
 
 /* ----------------------------------------------------------------
@@ -44,8 +118,16 @@ disableScrolling();
 const DEBUGGING = false;
 
 if (DEBUGGING) {
-  camera.position.set(VIGO.position.x, VIGO.position.y, VIGO.position.z);
-  camera.rotation.set(VIGO.rotation.x, VIGO.rotation.y, VIGO.rotation.z);
+  camera.position.set(
+    VIGO.position.x,
+    VIGO.position.y,
+    VIGO.position.z,
+  );
+  camera.rotation.set(
+    VIGO.rotation.x,
+    VIGO.rotation.y,
+    VIGO.rotation.z,
+  );
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.update();
@@ -56,14 +138,7 @@ if (DEBUGGING) {
 
 /* ---------------------------------------------------------------- */
 
-const tween = new Tween([camera.position, camera.rotation])
-  .to([VIGO.position, VIGO.rotation], 5000)
-  .easing(Easing.Sinusoidal.InOut)
-  .onComplete(() => {
-    onWorldLoadCompleted();
-  })
-  .start();
-
+const loader = new THREE.TextureLoader();
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
@@ -72,58 +147,51 @@ earthGroup.rotation.z = (-23.4 * Math.PI) / 180;
 scene.add(earthGroup);
 
 const geometrySettings = { radius: 1, detail: 12 };
-const loader = new THREE.TextureLoader();
 const geometry = new THREE.IcosahedronGeometry(
   geometrySettings.radius,
-  geometrySettings.detail
+  geometrySettings.detail,
 );
 
-const mapTexture = loader.load("/static/assets/earth/map.jpg");
-mapTexture.generateMipmaps = false;
-mapTexture.magFilter = THREE.NearestFilter;
+addEarth();
+addLights();
+addClouds();
+addSunlight();
+addGlow();
+addStars();
+const vigo = addVigoOutline();
 
-const material = new THREE.MeshPhongMaterial({
-  map: mapTexture,
-  specularMap: loader.load("/static/assets/earth/spec.jpg"),
-  bumpMap: loader.load("/static/assets/earth/bump.jpg"),
-  bumpScale: 0.04,
-});
-const earthMesh = new THREE.Mesh(geometry, material);
-earthGroup.add(earthMesh);
+const onWorldLoadCompleted = () => {
+  startLocationSection();
+  allowScrolling();
+  vigo.visible = true;
+  tweens.add(
+    new Tween([vigo.scale, vigo.position])
+      .to(
+        [
+          { x: 1.4, y: 1.4, z: 1.4 },
+          { x: 0.04, y: 0.04, z: 0.05 },
+        ],
+        1000,
+      )
+      .delay(1000)
+      .yoyo(true)
+      .repeat(Infinity)
+      .start(),
+  );
+};
 
-const lightsMat = new THREE.MeshBasicMaterial({
-  map: loader.load("/static/assets/earth/lights.jpg"),
-  blending: THREE.AdditiveBlending,
-});
-const lightsMesh = new THREE.Mesh(geometry, lightsMat);
-earthGroup.add(lightsMesh);
-
-const cloudsMat = new THREE.MeshStandardMaterial({
-  map: loader.load("/static/assets/earth/clouds.jpg"),
-  transparent: true,
-  opacity: 0.3,
-  blending: THREE.AdditiveBlending,
-  alphaMap: loader.load("/static/assets/earth/clouds_alpha.jpg"),
-  alphaTest: 0.3,
-});
-const cloudsMesh = new THREE.Mesh(geometry, cloudsMat);
-cloudsMesh.scale.setScalar(1.003);
-earthGroup.add(cloudsMesh);
-
-const fresnelMat = getFresnelMat();
-const glowMesh = new THREE.Mesh(geometry, fresnelMat);
-glowMesh.scale.setScalar(1.01);
-earthGroup.add(glowMesh);
-
-const stars = getStarfield({ numStars: 2000 });
-scene.add(stars);
-
-const sunLight = new THREE.DirectionalLight(0xffffff, 1.3);
-sunLight.position.set(-1, 3.5, -0.5);
-scene.add(sunLight);
+tweens.add(
+  new Tween([camera.position, camera.rotation])
+    .to([VIGO.position, VIGO.rotation], 5000)
+    .easing(Easing.Sinusoidal.InOut)
+    .onComplete(() => {
+      onWorldLoadCompleted();
+    })
+    .start(),
+);
 
 function animate(time) {
-  tween.update(time);
+  tweens.update(time);
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }

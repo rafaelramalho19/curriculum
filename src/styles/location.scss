@@ -1,12 +1,8 @@
-@keyframes appear {
-  from { opacity: 0; }
-}
-
-@keyframes appearFromTop {
-  from { opacity: 0; transform: translate(-50%, -100%)}
-}
-
 .location {
+  position: absolute;
+  top: 42vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 
@@ -14,65 +10,107 @@
     opacity: 1;
   }
 
-  &__pin {
-    position: fixed;
-    width: 3vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    user-select: none;
-    pointer-events: none;
-  }
-
   &__text {
-    position: absolute;
-    top: 42vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);
+    --color-primary: #f6aca2;
+    --color-secondary: #f49b90;
+    --color-tertiary: #f28b7d;
+    --color-quaternary: #f07a6a;
+    --color-quinary: #ee6352;
+
     animation: appearFromTop 0.4s ease-in-out both;
-
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary),
+      9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
+    font-family: bungee, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: calc(3vw);
+    text-align: center;
+    margin: 0;
+    color: var(--color-primary);
+    animation: textShadow 1.2s ease-in infinite;
+    letter-spacing: 0.4rem;
   }
 
-  &__background {
-    position: absolute;
-    background: #000;
-    border-radius: 30px;
-    animation: appear 0.3s ease-in-out both;
-  }
-
-  &:not(&--visible) &__background,
   &:not(&--visible) &__text {
     display: none;
   }
+}
 
-  &--visible &__background--top {
-    top: 0;
-    opacity: 0.6;
-    width: 100vw;
-    height: 45vh;
+@keyframes appear {
+  from {
+    opacity: 0;
   }
+}
 
-  &--visible &__background--left {
-    top: 45vh;
-    opacity: 0.6;
-    width: 45vw;
-    height: 10vh;
-    border-right: 2px solid #FFF;
+@keyframes appearFromTop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%);
   }
+}
 
-  &--visible &__background--bottom {
-    bottom: 0;
-    opacity: 0.6;
-    width: 100vw;
-    height: 45vh;
+@keyframes textShadow {
+  0% {
+    text-shadow: none;
   }
-
-  &--visible &__background--right {
-    top: 45vh;
-    right: 0;
-    opacity: 0.6;
-    width: 45vw;
-    height: 10vh;
-    border-left: 2px solid #FFF;
+  10% {
+    transform: translate(-3px, -3px);
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+  20% {
+    transform: translate(-6px, -6px);
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary);
+  }
+  30% {
+    transform: translate(-9px, -9px);
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary),
+      9px 9px var(--color-quaternary);
+  }
+  40% {
+    transform: translate(-12px, -12px);
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary),
+      9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
+  }
+  50% {
+    transform: translate(-12px, -12px);
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary),
+      9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
+  }
+  60% {
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary),
+      9px 9px var(--color-quaternary),
+      12px 12px 0 var(--color-quinary);
+  }
+  70% {
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary),
+      9px 9px var(--color-quaternary);
+  }
+  80% {
+    text-shadow:
+      3px 3px 0 var(--color-secondary),
+      6px 6px 0 var(--color-tertiary);
+  }
+  90% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+  100% {
+    text-shadow: none;
   }
 }
